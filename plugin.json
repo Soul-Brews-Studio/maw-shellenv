@@ -1,13 +1,13 @@
 {
   "$schema": "https://maw.soulbrews.studio/schema/plugin.json",
   "name": "shellenv",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Emit shell init code for the maw warp ergonomic — eval-style install for zsh/bash",
   "author": "Soul-Brews-Studio",
   "license": "MIT",
   "homepage": "https://github.com/Soul-Brews-Studio/maw-shellenv",
-  "sdk": "^0.1.0",
+  "sdk": "^1.0.0-alpha",
   "target": "js",
-  "capabilities": ["shell"],
+  "capabilities": [],
   "schemaVersion": 1
 }
