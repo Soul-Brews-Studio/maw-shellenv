@@ -29,6 +29,14 @@ maw() {
     command maw "$@"
   fi
 }
+# claude() wrapper — auto-fallback when --continue fails (no prior session).
+claude() {
+  if [[ "$*" == *"--continue"* ]]; then
+    command claude "$@" || command claude "\${@/--continue/}"
+  else
+    command claude "$@"
+  fi
+}
 # TODO(shellenv): tab completion for 'maw warp' via complete -F + 'command maw completions oracles'
 `;
 }

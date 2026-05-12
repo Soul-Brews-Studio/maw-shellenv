@@ -32,6 +32,16 @@ maw() {
     command maw "$@"
   fi
 }
+# claude() wrapper — auto-fallback when --continue fails (no prior session).
+# Lets \`maw wake\` send a clean \`claude --dangerously-skip-permissions --continue\`
+# instead of a verbose \`{ X || Y; }\` fallback chain.
+claude() {
+  if [[ "$*" == *"--continue"* ]]; then
+    command claude "$@" || command claude "\${@/--continue/}"
+  else
+    command claude "$@"
+  fi
+}
 # TODO(shellenv): tab completion for 'maw warp' via compdef + 'command maw completions oracles'
 `;
 }

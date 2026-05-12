@@ -15,6 +15,7 @@ export default async function handler(ctx: InvokeContext): Promise<InvokeResult>
     {
       "--help": Boolean,
       "-h": "--help",
+      "--install": Boolean,
     },
     0,
   );
@@ -33,7 +34,7 @@ export default async function handler(ctx: InvokeContext): Promise<InvokeResult>
     else logs.push(a.map(String).join(" "));
   };
   try {
-    await cmdShellenv(shell, { help: flags["--help"] });
+    await cmdShellenv(shell, { help: !!flags["--help"], install: !!flags["--install"] });
     return { ok: true, output: logs.join("\n") || undefined };
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : String(e);
